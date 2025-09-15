@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  Mail,
-  ArrowRight,
-  ChevronsDown,
-
-} from "lucide-react";
+import { Mail, ArrowRight, ChevronsDown } from "lucide-react";
 import RotatingText from "./RotatingText";
-
 
 const HeroOriginal = React.forwardRef(({ id, scrollToSection }, ref) => (
   <section
@@ -28,20 +22,33 @@ const HeroOriginal = React.forwardRef(({ id, scrollToSection }, ref) => (
           Hi, I'm <span className="text-accent">Yaser Zarifi</span>
         </h1>
         <RotatingText
-                        texts={[ 'a Programmer', 'a Web Developer', 'an Architect']}
-                        mainClassName="text-accent px-2 sm:px-2 md:px-3  text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center content-center font-heading text-4xl sm:text-5xl md:text-6xl mb-3 font-extrabold text-gray-900 dark:text-white"
-                        staggerFrom={"last"}
-                        initial={{ y: "100%" }}
-                        animate={{ y: 0 }}
-                        exit={{ y: "-120%" }}
-                        staggerDuration={0.025}
-                        splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-                        transition={{ type: "spring", damping: 30, stiffness: 400 }}
-                        rotationInterval={2000}
-                    />
+          texts={[
+            "a Programmer",
+            "a Web Developer",
+            "a Full-Stack Developer",
+            "a Computer Engineer",
+            "an Architect",
+            "an Urban Planner",
+            "a Tech Enthusiast",
+            "a Problem Solver",
+            "a Creative Thinker",
+          ]}
+          mainClassName="text-accent px-2 sm:px-2 md:px-3  text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center content-center font-heading text-4xl sm:text-5xl md:text-6xl mb-3 font-extrabold text-gray-900 dark:text-white"
+          staggerFrom={"last"}
+          initial={{ y: "100%" }}
+          animate={{ y: 0 }}
+          exit={{ y: "-120%" }}
+          staggerDuration={0.025}
+          splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+          transition={{ type: "spring", damping: 30, stiffness: 400 }}
+          rotationInterval={2000}
+        />
 
         <p className="text-xl sm:text-2xl max-w-3xl mx-auto mb-8 text-gray-600 dark:text-gray-300">
-          I’m Yaser, a Computer Engineering student, programmer, and Full-Stack Web Developer with a background in Architecture and Urban Planning — blending technology and design to craft meaningful digital experiences.
+          I’m Yaser, a Computer Engineering student, programmer, and Full-Stack
+          Web Developer with a background in Architecture and Urban Planning —
+          blending technology and design to craft meaningful digital
+          experiences.
         </p>
         <div className="flex justify-center space-x-4">
           <a

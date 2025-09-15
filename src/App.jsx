@@ -1,24 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  Briefcase,
-  Code,
-  Mail,
-  Linkedin,
-  Github,
-  User,
-  Sun,
-  Moon,
-  Download,
-  ArrowRight,
-  ChevronsDown,
-  Menu,
-  X,
-  ArrowUp,
-  Terminal,
-  Columns,
-  UserSquare,
-  SquareTerminal,
-} from "lucide-react";
+
 import { MemoizedBackground } from "./components/MemoizedBackground.jsx";
 import { MemoizedBackground2 } from "./components/MemoizedBackground2.jsx";
 import { MemoizedBackground3 } from "./components/MemoizedBackground3.jsx";

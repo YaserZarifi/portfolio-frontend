@@ -3,6 +3,7 @@ import Section from "./Section.jsx";
 import { Award, ExternalLink, FileText, Menu } from "lucide-react";
 
 import { motion, AnimatePresence } from "framer-motion";
+// import ViewPDF from './viewPDF.jsx';
 
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long" };
@@ -184,6 +185,9 @@ const Certificates = React.forwardRef(({ id, certificates = [] }, ref) => {
                           View PDF <FileText className="ml-1.5 w-4 h-4" />
                         </a>
                       )}
+
+                      {/* <ViewPDF fileUrl={cert.pdf_file} /> */}
+
                     </div>
                   </motion.div>
                 ))}

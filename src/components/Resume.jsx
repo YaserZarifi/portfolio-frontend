@@ -19,7 +19,7 @@ import Section from "./Section.jsx";
             download
           className={`inline-flex items-center px-8 py-3 bg-accent text-text-accent font-semibold rounded-lg shadow-md hover:bg-accent/90 transition-all duration-300 transform hover:scale-105 ${!profile?.resume_file ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
-          Download Full Resume <Download className="ml-2" size={20} />
+          Download PDF Resume <Download className="ml-2" size={20} />
         </a>
       </div>
       <div className="p-8 md:p-12 bg-white/10 bg-slate-800/40 backdrop-blur-md border border-slate-700/50 rounded-lg shadow-lg">

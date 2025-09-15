@@ -12,7 +12,7 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <div className="fixed bottom-8 left-8 p-2 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-full shadow-lg flex items-center gap-2 z-50">
+    <div className="fixed bottom-16 left-8 p-2 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-full shadow-lg flex items-center gap-2 z-50">
       {themes.map((theme) => (
         <button
           key={theme.name}

@@ -47,9 +47,12 @@ const About = React.forwardRef(({ id, skills = [] }, ref) => {
       <div className="p-8 md:p-12 bg-white/10 dark:bg-slate-800/40 backdrop-blur-md border border-white/20 dark:border-slate-700/50 rounded-lg shadow-lg">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           <div className="lg:w-1/2 text-lg text-gray-800 dark:text-gray-300 space-y-4 text-center lg:text-left">
-            <p>Hello! I'm a dedicated and results-driven Web Developer...</p>
-            <p>My journey into web development started with a fascination...</p>
-            <p>When I'm not coding, you can find me exploring new technologies...</p>
+            <p>Hello! I'm Yaser, a Full-Stack Web Developer with a passion for creating clean, efficient, and user-friendly web applications. I specialize in modern technologies like React and Django, transforming ideas into functional and engaging digital experiences.</p>
+
+                <p>Before diving into tech, I studied Urban Planning and Architecture, which gives me a unique perspective on design, structure, and problem-solving. I enjoy merging creativity, logic, and design thinking to build solutions that are both innovative and practical.</p>
+
+
+
           </div>
 
           <div className="lg:w-1/2 w-full">

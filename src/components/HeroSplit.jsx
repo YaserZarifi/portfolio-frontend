@@ -27,7 +27,18 @@ const HeroSplit = React.forwardRef(({ id, scrollToSection }, ref) => {
               Yaser Zarifi
             </h1>
              <RotatingText
-                texts={[ 'a Programmer', 'a Web Developer', 'an Architect']}
+                texts={[
+                    'a Programmer',
+                    'a Web Developer',
+                    'a Full-Stack Developer',
+                    'a Computer Engineer',
+                    'an Architect',
+                    'an Urban Planner',
+                    'a Tech Enthusiast',
+                    'a Problem Solver',
+                    'a Creative Thinker'
+                ]}
+
                 mainClassName="font-heading text-4xl sm:text-3xl md:text-5xl mb-4 font-extrabold text-gray-900 dark:text-white "
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
@@ -39,11 +50,10 @@ const HeroSplit = React.forwardRef(({ id, scrollToSection }, ref) => {
                 rotationInterval={2000}
             />
 
-            <p className=" text-gray-600 dark:text-gray-300 text-xl sm:text-2xl max-w-xl mx-auto md:mx-0 mb-8">
-              I'm a passionate{" "}
-              <span className="text-accent font-semibold">Computer Engineer</span>{" "}
-              , programmer, and Full-Stack Web Developer with a background in Architecture and Urban Planning — blending technology and design to craft meaningful digital experiences.
+            <p className="text-gray-600 dark:text-gray-300 text-xl sm:text-2xl max-w-xl mx-auto md:mx-0 mb-8">
+            I'm a passionate <span className="text-accent font-semibold">Computer Engineer</span>, programmer, and Full-Stack Web Developer with a foundation in Architecture and Urban Planning. merging technology, design, and creativity to craft impactful and thoughtful digital experiences.
             </p>
+
             <div className="flex justify-center md:justify-start space-x-4">
               <a
                 href="#contact"

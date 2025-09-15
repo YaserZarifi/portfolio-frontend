@@ -15,41 +15,144 @@ const Certificates = React.forwardRef(({ id, certificates = [] }, ref) => {
   const [activeIssuer, setActiveIssuer] = useState("All");
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
-  useEffect(() => {
-    if (certificates.length === 0) {
-      setActiveIssuer("All");
-      return;
-    }
-    const uniqueIssuers = certificates.reduce((acc, cert) => {
-      if (!acc.find((issuer) => issuer.id === cert.issuer.id)) {
-        acc.push(cert.issuer);
+
+
+
+//   useEffect(() => {
+//     if (certificates.length === 0) {
+//       setActiveIssuer("All");
+//       return;
+//     }
+
+
+
+
+
+//     const uniqueIssuers = certificates.reduce((acc, cert) => {
+//         cert.issuers.forEach((issuer) => {
+//             if (!acc.find((i) => i.id === issuer.id)) {
+//             acc.push(issuer);
+//             }
+//         });
+//         return acc;
+//     }, []);
+//         setIssuers(uniqueIssuers);
+
+
+
+
+
+//     setIssuers(uniqueIssuers);
+
+//     // const issuerCounts = certificates.reduce((acc, cert) => {
+//     //   const issuerName = cert.issuer.name;
+//     //   acc[issuerName] = (acc[issuerName] || 0) + 1;
+//     //   return acc;
+//     // }, {});
+
+
+
+
+//     const issuerCounts = certificates.reduce((acc, cert) => {
+//         cert.issuers.forEach((issuer) => {
+//             acc[issuer.name] = (acc[issuer.name] || 0) + 1;
+//         });
+//         return acc;
+//     }, {});
+
+
+
+
+
+
+
+//     if (Object.keys(issuerCounts).length > 0) {
+//       const defaultIssuer = Object.keys(issuerCounts).reduce((a, b) =>
+//         issuerCounts[a] > issuerCounts[b] ? a : b
+//       );
+//       setActiveIssuer(defaultIssuer);
+//     } else {
+//       setActiveIssuer("All");
+//     }
+//   }, [certificates]);
+
+
+
+useEffect(() => {
+  if (certificates.length === 0) {
+    setActiveIssuer("All");
+    return;
+  }
+
+  // Unique issuers
+  const uniqueIssuers = certificates.reduce((acc, cert) => {
+    (cert.issuers || []).forEach((issuer) => {
+      if (!acc.find((i) => i.id === issuer.id)) {
+        acc.push(issuer);
       }
-      return acc;
-    }, []);
-    setIssuers(uniqueIssuers);
+    });
+    return acc;
+  }, []);
+  setIssuers(uniqueIssuers);
 
-    const issuerCounts = certificates.reduce((acc, cert) => {
-      const issuerName = cert.issuer.name;
-      acc[issuerName] = (acc[issuerName] || 0) + 1;
-      return acc;
-    }, {});
+  // Count issuers
+  const issuerCounts = certificates.reduce((acc, cert) => {
+    (cert.issuers || []).forEach((issuer) => {
+      acc[issuer.name] = (acc[issuer.name] || 0) + 1;
+    });
+    return acc;
+  }, {});
 
-    if (Object.keys(issuerCounts).length > 0) {
-      const defaultIssuer = Object.keys(issuerCounts).reduce((a, b) =>
-        issuerCounts[a] > issuerCounts[b] ? a : b
-      );
-      setActiveIssuer(defaultIssuer);
-    } else {
-      setActiveIssuer("All");
-    }
-  }, [certificates]);
+  if (Object.keys(issuerCounts).length > 0) {
+    const defaultIssuer = Object.keys(issuerCounts).reduce((a, b) =>
+      issuerCounts[a] > issuerCounts[b] ? a : b
+    );
+    setActiveIssuer(defaultIssuer);
+  } else {
+    setActiveIssuer("All");
+  }
+}, [certificates]);
 
-  const filteredCertificates = useMemo(() => {
-    if (activeIssuer === "All") {
-      return certificates;
-    }
-    return certificates.filter((cert) => cert.issuer.name === activeIssuer);
-  }, [activeIssuer, certificates]);
+
+
+
+
+
+
+
+
+
+//   const filteredCertificates = useMemo(() => {
+//     if (activeIssuer === "All") {
+//       return certificates;
+//     }
+//     // return certificates.filter((cert) => cert.issuer.name === activeIssuer);
+
+//     return certificates.filter((cert) =>
+//         cert.issuers.some((issuer) => issuer.name === activeIssuer)
+//     );
+
+//   }, [activeIssuer, certificates]);
+
+
+
+const filteredCertificates = useMemo(() => {
+  if (activeIssuer === "All") return certificates;
+
+  return certificates.filter((cert) =>
+    (cert.issuers || []).some((issuer) => issuer.name === activeIssuer)
+  );
+}, [activeIssuer, certificates]);
+
+
+
+
+
+
+
+
+
+
 
   const placeholderLogo = `https://placehold.co/64x64/475569/E2E8F0?text=Logo`;
 
@@ -160,9 +263,18 @@ const Certificates = React.forwardRef(({ id, certificates = [] }, ref) => {
                     <h4 className="font-heading font-bold text-lg text-gray-900 dark:text-white">
                       {cert.title}
                     </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    {/* <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                       {cert.issuer.name} &bull; {formatDate(cert.issue_date)}
+                    </p> */}
+
+
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    {cert.issuers && cert.issuers.length > 0
+                        ? cert.issuers.map((issuer) => issuer.name).join(", ")
+                        : "No issuer"} &bull; {formatDate(cert.issue_date)}
                     </p>
+
+
                     <div className="flex items-center space-x-4 mt-4 pt-4 border-t border-slate-700">
                       {cert.credential_url && (
                         <a

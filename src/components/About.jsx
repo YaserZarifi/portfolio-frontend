@@ -18,29 +18,43 @@ const skillVariant = {
 };
 
 
-const About = React.forwardRef(({ id, skills = [] }, ref) => {
+const About = React.forwardRef(({ id, skills = [], categories = [] }, ref) => {
   const [skillCategories, setSkillCategories] = useState({});
   const [activeTab, setActiveTab] = useState('');
 
+
+
   useEffect(() => {
-    const groupedSkills = skills.reduce((acc, skill) => {
-      const categoryMap = {
-        'FRONTEND': 'Frontend & Design',
-        'BACKEND': 'Backend & Languages',
-        'DATA_TOOLS': 'Data Science & Tools',
-      };
-      const categoryName = categoryMap[skill.category] || 'Other';
-      if (!acc[categoryName]) {
-        acc[categoryName] = [];
-      }
-      acc[categoryName].push(skill);
+    if (categories.length === 0) return;
+
+    const allGroupedSkills = categories.reduce((acc, category) => {
+      acc[category.name] = [];
       return acc;
     }, {});
-    setSkillCategories(groupedSkills);
-    if (Object.keys(groupedSkills).length > 0) {
-      setActiveTab(Object.keys(groupedSkills)[0]);
+
+    skills.forEach((skill) => {
+      if (skill.category && allGroupedSkills[skill.category.name]) {
+        allGroupedSkills[skill.category.name].push(skill);
+      }
+    });
+
+    const finalCategories = {};
+    for (const categoryName in allGroupedSkills) {
+      if (allGroupedSkills[categoryName].length > 0) {
+        finalCategories[categoryName] = allGroupedSkills[categoryName];
+      }
     }
-  }, [skills]);
+
+    setSkillCategories(finalCategories);
+
+    const availableTabs = Object.keys(finalCategories);
+    if (availableTabs.length > 0) {
+      setActiveTab(availableTabs[0]);
+    }
+
+  }, [skills, categories]);
+
+
 
   return (
     <Section ref={ref} id={id} title="About Me">

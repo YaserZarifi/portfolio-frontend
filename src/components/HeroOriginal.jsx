@@ -9,7 +9,7 @@ const HeroOriginal = React.forwardRef(({ id, scrollToSection }, ref) => (
     className="min-h-screen flex items-center bg-transparent"
   >
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center text-white">
+      <div className="text-center text-white pt-16">
         <div className="relative w-48 h-48 mx-auto mb-8 rounded-full overflow-hidden border-4 border-accent/50 shadow-lg">
           <img
             src="https://yaserzarifi.github.io/portfolio/assets/img/Me2.jpg"
@@ -23,17 +23,19 @@ const HeroOriginal = React.forwardRef(({ id, scrollToSection }, ref) => (
         </h1>
         <RotatingText
           texts={[
-            "a Programmer",
-            "a Web Developer",
-            "a Full-Stack Developer",
-            "a Computer Engineer",
-            "an Architect",
-            "an Urban Planner",
-            "a Tech Enthusiast",
-            "a Problem Solver",
-            "a Creative Thinker",
-          ]}
-          mainClassName="text-accent px-2 sm:px-2 md:px-3  text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center content-center font-heading text-4xl sm:text-5xl md:text-6xl mb-3 font-extrabold text-gray-900 dark:text-white"
+                    'a Programmer',
+                    'a Web Developer',
+                    'a Machine Learning Enthusiast',
+                    'a Full-Stack Developer',
+                    'a Computer Engineer',
+                    'an Architect',
+                    'an Urban Planner',
+                    'an AI Explorer',
+                    'a Data Problem Solver',
+                    'a Technology Innovator',
+                    'a Creative Thinker'
+                ]}
+          mainClassName="text-accent px-2 sm:px-2 md:px-3  text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center content-center font-heading text-3xl sm:text-4xl md:text-5xl mb-2 font-extrabold text-gray-900 dark:text-white"
           staggerFrom={"last"}
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
@@ -44,11 +46,8 @@ const HeroOriginal = React.forwardRef(({ id, scrollToSection }, ref) => (
           rotationInterval={2000}
         />
 
-        <p className="text-xl sm:text-2xl max-w-3xl mx-auto mb-8 text-gray-600 dark:text-gray-300">
-          I’m Yaser, a Computer Engineering student, programmer, and Full-Stack
-          Web Developer with a background in Architecture and Urban Planning —
-          blending technology and design to craft meaningful digital
-          experiences.
+        <p className="text-sm sm:text-1xl max-w-2xl mx-auto mb-6 text-gray-600 dark:text-gray-300">
+          I'm a passionate <span className="text-accent font-semibold">Computer Engineer</span>, programmer, Full-Stack Web Developer, and aspiring Machine Learning enthusiast with a foundation in Architecture and Urban Planning. merging technology, data, design, and creativity to craft impactful digital experiences.
         </p>
         <div className="flex justify-center space-x-4">
           <a

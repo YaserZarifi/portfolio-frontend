@@ -30,6 +30,7 @@ import {
   getEducations,
   getCertificates,
   getProfile ,
+  getCategories,
 } from "./api";
 import ProjectModal from "./components/ProjectModal.jsx";
 import Certificates from "./components/Certificates.jsx";
@@ -40,7 +41,7 @@ const App = () => {
 
   const [heroStyle, setHeroStyle] = useState("split");
   const [backgroundStyle, setBackgroundStyle] = useState("var1");
-
+  const [categories, setCategories] = useState([]);
   const [projects, setProjects] = useState([]);
   const [skills, setSkills] = useState([]);
   const [experiences, setExperiences] = useState([]);
@@ -70,6 +71,7 @@ const App = () => {
         educationsData,
         certificatesData,
         profileData,
+        categoriesData,
       ] = await Promise.all([
         getProjects(),
         getSkills(),
@@ -77,6 +79,7 @@ const App = () => {
         getEducations(),
         getCertificates(),
         getProfile(),
+        getCategories(),
       ]);
 
       setProjects(projectsData);
@@ -84,8 +87,10 @@ const App = () => {
       setExperiences(experiencesData);
       setEducations(educationsData);
       setCertificates(certificatesData);
-      setIsLoading(false);
+      setCategories(categoriesData);
       setProfile(profileData);
+      setIsLoading(false);
+
     };
 
     fetchAllData();
@@ -353,7 +358,7 @@ const App = () => {
 
 
         </section>
-        <About ref={sections.about} id="about" skills={skills} />
+        <About ref={sections.about} id="about" skills={skills} categories={categories}/>
         <Projects
           ref={sections.projects}
           id="projects"

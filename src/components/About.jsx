@@ -104,7 +104,7 @@ const About = React.forwardRef(({ id, skills = [], categories = [] }, ref) => {
                     <img
                       src={skill.icon_url}
                       alt={skill.name}
-                      className={`w-10 h-10 md:w-12 md:h-12 mb-2 ${skill.name === "Django" ? "drop-shadow-[0_0_6px_white]" : ""}
+                      className={`w-10 h-10 md:w-12 md:h-12 mb-2 rounded-md ${skill.name === "Django" ? "drop-shadow-[0_0_6px_white]" : ""}
                       ${skill.name === "SQLite" ? "drop-shadow-[0_0_0.2px_white]" : ""}
                       `}
                     />

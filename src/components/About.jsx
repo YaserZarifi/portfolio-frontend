@@ -1,6 +1,40 @@
 import React, { useState, useEffect } from "react";
 import Section from './Section.jsx';
 import { motion, AnimatePresence } from 'framer-motion';
+import LogoLoop from "./LogoLoop.jsx";
+import { SiMysql ,SiSqlite ,SiHtml5 ,SiCss3 ,SiGit ,SiJupyter ,SiNumpy ,SiPandas ,SiScikitlearn ,SiTensorflow ,SiArcgis,SiSketchup,SiAutodeskrevit ,SiTwinmotion   ,SiAutocad ,SiBootstrap ,SiReact ,SiPython , SiTailwindcss,SiJavascript , SiDjango, SiArc } from 'react-icons/si';
+import { FaJava  } from "react-icons/fa";
+import { BsBadge3dFill } from "react-icons/bs";
+import { FaC } from "react-icons/fa6";
+
+
+const techLogos = [
+  { node: <SiNumpy />, title: "", href: "#" },
+  { node: <SiPandas />, title: "", href: "#" },
+  { node: <SiScikitlearn />, title: "", href: "#" },
+  { node: <SiArcgis />, title: "", href: "#" },
+  { node: <SiSketchup />, title: "", href: "#" },
+  { node: <SiAutocad />, title: "", href: "#" },
+  { node: <SiAutodeskrevit />, title: "", href: "#" },
+  { node: <SiTwinmotion />, title: "", href: "#" },
+  { node: <BsBadge3dFill />, title: "", href: "#" },
+  { node: <SiReact />, title: "React", href: "https://react.dev" },
+  { node: <SiTailwindcss />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+  { node: <SiJavascript  />, title: "JavaScript", href: "#" },
+  { node: <FaJava  />, title: "Java", href: "#" },
+  { node: <SiPython  />, title: "Python", href: "#" },
+  { node: <SiDjango  />, title: "Django", href: "#" },
+  { node: <SiBootstrap  />, title: "Bootstrap", href: "#" },
+  { node: <FaC />, title: "C language", href: "#" },
+  { node: <SiMysql />, title: "", href: "#" },
+  { node: <SiTensorflow />, title: "", href: "#" },
+  { node: <SiSqlite />, title: "", href: "#" },
+  { node: <SiHtml5 />, title: "", href: "#" },
+  { node: <SiCss3 />, title: "", href: "#" },
+  { node: <SiGit />, title: "", href: "#" },
+  { node: <SiJupyter />, title: "", href: "#" },
+
+];
 
 const containerVariant = {
   visible: {
@@ -10,6 +44,9 @@ const containerVariant = {
   },
   hidden: {},
 };
+
+
+
 
 const skillVariant = {
   hidden: { y: 20, opacity: 0 },
@@ -115,7 +152,21 @@ const About = React.forwardRef(({ id, skills = [], categories = [] }, ref) => {
             </AnimatePresence>
           </div>
         </div>
+
       </div>
+<div style={{ height: '200px', position: 'relative', overflow: 'hidden'}}>
+      <LogoLoop
+        logos={techLogos}
+        speed={120}
+        direction="left"
+        logoHeight={48}
+        gap={40}
+        pauseOnHover
+        scaleOnHover
+
+        ariaLabel="Technology partners"
+      />
+    </div>
     </Section>
   );
 });

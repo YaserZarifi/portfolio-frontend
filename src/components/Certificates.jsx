@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Section from "./Section.jsx";
-import { Award, ExternalLink, FileText, Menu } from "lucide-react";
+import { Award, ExternalLink, FileText, Menu, FileDown } from "lucide-react";
 
 import { motion, AnimatePresence } from "framer-motion";
 // import ViewPDF from './viewPDF.jsx';
@@ -294,7 +294,7 @@ const filteredCertificates = useMemo(() => {
                           rel="noopener noreferrer"
                           className="inline-flex items-center text-sm font-semibold text-accent hover:underline"
                         >
-                          View PDF <FileText className="ml-1.5 w-4 h-4" />
+                          Download PDF <FileDown className="ml-1.5 w-4 h-4" />
                         </a>
                       )}
 

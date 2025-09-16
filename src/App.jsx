@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef,useCallback } from "react";
 
 import { MemoizedBackground } from "./components/MemoizedBackground.jsx";
 import { MemoizedBackground2 } from "./components/MemoizedBackground2.jsx";
@@ -22,6 +22,7 @@ import Footer from "./components/Footer.jsx";
 import BackToTopButton from "./components/BackToTopButton.jsx";
 import BackgroundSwitcher from "./components/BackGroundSwitcher.jsx";
 import { AnimatePresence, motion } from "framer-motion";
+import LoadingOverlay from "./components/LoadingOverlay.jsx";
 
 import {
   getProjects,
@@ -31,6 +32,7 @@ import {
   getCertificates,
   getProfile ,
   getCategories,
+  pingServer,
 } from "./api";
 import ProjectModal from "./components/ProjectModal.jsx";
 import Certificates from "./components/Certificates.jsx";
@@ -48,9 +50,15 @@ const App = () => {
   const [educations, setEducations] = useState([]);
   const [certificates, setCertificates] = useState([]);
   const [profile, setProfile] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+//   const [isLoading, setIsLoading] = useState(true);
+const [fetchStatus, setFetchStatus] = useState('loading');
 
   const [selectedProject, setSelectedProject] = useState(null);
+
+
+
+
+    const pollingInterval = useRef();
 
   const sections = {
     home: useRef(null),
@@ -61,40 +69,120 @@ const App = () => {
     certificates: useRef(null),
   };
 
-  useEffect(() => {
-    const fetchAllData = async () => {
-      // Use Promise.all to fetch everything concurrently
-      const [
-        projectsData,
-        skillsData,
-        experiencesData,
-        educationsData,
-        certificatesData,
-        profileData,
-        categoriesData,
-      ] = await Promise.all([
-        getProjects(),
-        getSkills(),
-        getExperiences(),
-        getEducations(),
-        getCertificates(),
-        getProfile(),
-        getCategories(),
-      ]);
 
-      setProjects(projectsData);
-      setSkills(skillsData);
-      setExperiences(experiencesData);
-      setEducations(educationsData);
-      setCertificates(certificatesData);
-      setCategories(categoriesData);
-      setProfile(profileData);
-      setIsLoading(false);
+//   useEffect(() => {
+//     const fetchAllData = async () => {
+//       // Use Promise.all to fetch everything concurrently
+//       const [
+//         projectsData,
+//         skillsData,
+//         experiencesData,
+//         educationsData,
+//         certificatesData,
+//         profileData,
+//         categoriesData,
+//       ] = await Promise.all([
+//         getProjects(),
+//         getSkills(),
+//         getExperiences(),
+//         getEducations(),
+//         getCertificates(),
+//         getProfile(),
+//         getCategories(),
+//       ]);
 
+//       setProjects(projectsData);
+//       setSkills(skillsData);
+//       setExperiences(experiencesData);
+//       setEducations(educationsData);
+//       setCertificates(certificatesData);
+//       setCategories(categoriesData);
+//       setProfile(profileData);
+//       setIsLoading(false);
+
+//     };
+
+//     fetchAllData();
+//   }, []);
+
+
+
+
+const fetchAllData = useCallback(async () => {
+
+  try {
+    const [
+      projectsData,
+      skillsData,
+      experiencesData,
+      educationsData,
+      certificatesData,
+      profileData,
+      categoriesData,
+    ] = await Promise.all([
+      getProjects(),
+      getSkills(),
+      getExperiences(),
+      getEducations(),
+      getCertificates(),
+      getProfile(),
+      getCategories(),
+    ]);
+
+    setProjects(projectsData);
+    setSkills(skillsData);
+    setExperiences(experiencesData);
+    setEducations(educationsData);
+    setCertificates(certificatesData);
+    setProfile(profileData);
+    setCategories(categoriesData);
+
+    setFetchStatus('success');
+
+    setTimeout(() => {
+      setFetchStatus('idle');
+    }, 1500);
+
+  } catch (error) {
+    console.error("Failed to fetch initial data:", error);
+    setFetchStatus('error');
+  }
+}, [setProjects, setSkills, setExperiences, setEducations, setCertificates, setProfile, setCategories, setFetchStatus]);
+
+
+
+
+
+useEffect(() => {
+    if (fetchStatus !== 'loading') return;
+
+    const checkServerStatus = async () => {
+      console.log("Pinging server...");
+      try {
+        await pingServer();
+
+        console.log("Server is awake!");
+        clearInterval(pollingInterval.current);
+        fetchAllData();
+
+      } catch (error) {
+        console.log("Server is still sleeping...");
+      }
     };
 
-    fetchAllData();
-  }, []);
+    checkServerStatus();
+    pollingInterval.current = setInterval(checkServerStatus, 3000);
+
+    return () => clearInterval(pollingInterval.current);
+
+  }, [fetchStatus, fetchAllData]);
+
+
+
+
+
+
+
 
   useEffect(() => {
     if (darkMode) {
@@ -223,7 +311,11 @@ const App = () => {
   return (
     // <div className="relative font-sans leading-relaxed text-gray-800 dark:text-gray-200">
     <div className="relative font-sans leading-relaxed text-gray-800 dark:text-gray-200 transition-colors duration-500">
-      {/* <div className="fixed top-0 left-0 w-full h-full -z-10">
+      {fetchStatus !== 'idle' && (
+        <LoadingOverlay status={fetchStatus} onRetry={fetchAllData} />
+      )}
+
+            {/* <div className="fixed top-0 left-0 w-full h-full -z-10">
         <MemoizedBackground />
       </div> */}
 

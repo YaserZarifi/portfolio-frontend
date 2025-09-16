@@ -1,7 +1,7 @@
 
 //
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ||  'http://127.0.0.1:8000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api';
 
 const fetchAPI = async (endpoint) => {
     try {
@@ -12,7 +12,7 @@ const fetchAPI = async (endpoint) => {
         return await response.json();
     } catch (error) {
         console.error(`Fetching ${endpoint} failed:`, error);
-        return [];
+        throw error;
     }
 };
 
@@ -48,5 +48,6 @@ export const sendMessage = async (messageData) => {
 
 export const getProfile = () => fetchAPI('profile');
 export const getCategories = () => fetchAPI('categories');
+export const pingServer = () => fetchAPI('health-check');
 
 

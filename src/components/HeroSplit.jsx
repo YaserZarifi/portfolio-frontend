@@ -15,7 +15,7 @@ const HeroSplit = React.forwardRef(({ id, scrollToSection }, ref) => {
     <section
       ref={ref}
       id={id}
-      className="min-h-screen flex items-center bg-transparent"
+      className=" min-h-screen flex items-center bg-transparent pt-20 sm:pt-24 md:pt-24"
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -30,7 +30,7 @@ const HeroSplit = React.forwardRef(({ id, scrollToSection }, ref) => {
                 texts={[
                     'a Programmer',
                     'a Web Developer',
-                    'a Machine Learning Enthusiast',
+                    'a ML Enthusiast',
                     'a Full-Stack Developer',
                     'a Computer Engineer',
                     'an Architect',
@@ -42,13 +42,13 @@ const HeroSplit = React.forwardRef(({ id, scrollToSection }, ref) => {
                 ]}
 
 
-                mainClassName="font-heading text-4xl sm:text-3xl md:text-5xl mb-4 font-extrabold text-gray-900 dark:text-white "
+                mainClassName="font-heading text-4xl sm:text-3xl md:text-5xl mb-4 font-extrabold text-gray-900 dark:text-white mx-auto md:items-center sm:items-center"
                 staggerFrom={"last"}
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "-120%" }}
                 staggerDuration={0.025}
-                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1 mx-auto md:items-center sm:items-center"
                 transition={{ type: "spring", damping: 30, stiffness: 400 }}
                 rotationInterval={2000}
             />

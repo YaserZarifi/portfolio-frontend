@@ -58,9 +58,9 @@ const About = React.forwardRef(({ id, skills = [], categories = [] }, ref) => {
 
   return (
     <Section ref={ref} id={id} title="About Me">
-      <div className="p-8 md:p-12 bg-white/10 dark:bg-slate-800/40 backdrop-blur-md border border-white/20 dark:border-slate-700/50 rounded-lg shadow-lg">
+      <div className="py-8 bg-white/10 dark:bg-slate-800/40 backdrop-blur-md border border-white/20 dark:border-slate-700/50 rounded-lg shadow-lg">
         <div className="flex flex-col lg:flex-row items-center gap-12">
-          <div className="lg:w-1/2 text-lg text-gray-800 dark:text-gray-300 space-y-4 text-center lg:text-left">
+          <div className="lg:w-1/2 text-lg text-gray-800 dark:text-gray-300 space-y-4 text-left lg:text-left p-4">
             <p>Hello! I'm Yaser, a Full-Stack Web Developer with a passion for creating clean, efficient, and user-friendly web applications. I specialize in modern technologies like React and Django, transforming ideas into functional and engaging digital experiences.</p>
 
                 <p>Before diving into tech, I studied Urban Planning and Architecture, which gives me a unique perspective on design, structure, and problem-solving. I enjoy merging creativity, logic, and design thinking to build solutions that are both innovative and practical.</p>
@@ -70,7 +70,7 @@ const About = React.forwardRef(({ id, skills = [], categories = [] }, ref) => {
           </div>
 
           <div className="lg:w-1/2 w-full">
-            <div className="flex justify-center lg:justify-start border-b border-slate-700 mb-6">
+            <div className="flex overflow-x-auto justify-start border-b border-slate-700 mb-6">
               {Object.keys(skillCategories).map((category) => (
                 <button
                   key={category}
@@ -93,7 +93,7 @@ const About = React.forwardRef(({ id, skills = [], categories = [] }, ref) => {
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="grid grid-cols-4 gap-4 min-h-[220px]" shifts
+                className="p-4 grid grid-cols-4 gap-4 min-h-[220px]" shifts
               >
                 {activeTab && skillCategories[activeTab] && skillCategories[activeTab].map((skill) => (
                   <motion.div

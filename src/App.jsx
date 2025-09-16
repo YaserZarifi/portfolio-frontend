@@ -41,7 +41,7 @@ const App = () => {
   const [darkMode, setDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
 
-  const [heroStyle, setHeroStyle] = useState("split");
+  const [heroStyle, setHeroStyle] = useState("original");
   const [backgroundStyle, setBackgroundStyle] = useState("var1");
   const [categories, setCategories] = useState([]);
   const [projects, setProjects] = useState([]);

@@ -6,7 +6,7 @@ const HeroOriginal = React.forwardRef(({ id, scrollToSection }, ref) => (
   <section
     ref={ref}
     id={id}
-    className="min-h-screen flex items-center bg-transparent"
+    className="py-10 min-h-screen flex items-center bg-transparent"
   >
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center text-white pt-16">

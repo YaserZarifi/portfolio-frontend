@@ -100,7 +100,7 @@ const Contact = React.forwardRef(({ id }, ref) => {
             ></textarea>
           </div>
           <div className="text-center">
-            <p>If you are living inside Iran, please make sure to connect through a VPN to send the email !</p>
+
             <button
               type="submit"
               disabled={isSubmitting}

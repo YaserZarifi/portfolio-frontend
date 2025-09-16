@@ -158,10 +158,10 @@ const filteredCertificates = useMemo(() => {
 
   return (
     <Section ref={ref} id={id} title="Awards & Certificates">
-      <div className="p-8 md:p-12 bg-white/10 dark:bg-slate-800/40 backdrop-blur-md border border-white/20 dark:border-slate-700/50 rounded-lg shadow-lg">
+      <div className="p-8 md:p-12 bg-white/10 dark:bg-slate-800/40 backdrop-blur-md border border-white/20 dark:border-slate-700/50 rounded-lg shadow-lg ">
         <div className="flex flex-col lg:flex-row gap-10">
           <aside
-            className={`w-full transition-all sticky duration-300 ease-in-out ${
+            className={`w-full transition-all sticky duration-300 ease-in-out  ${
               isSidebarCollapsed ? "lg:w-20" : "lg:w-1/4"
             }`}
           >
@@ -188,15 +188,15 @@ const filteredCertificates = useMemo(() => {
               </button> */}
             </div>
 
-            <div className="flex flex-row  overflow-x-auto lg:flex-col lg:overflow-x-visible lg:space-y-2 lg:gap-0">
+            <div  className="flex flex-row overflow-x-auto lg:flex-col lg:max-h-96 lg:overflow-y-auto lg:space-y-2 lg:gap-0 thin-scrollbar">
               <button
-    onClick={() => setActiveIssuer("All")}
-    className={`w-full flex items-center gap-3 p-3 rounded-lg text-left transition-colors duration-200 ${
-        activeIssuer === 'All' ? 'bg-accent/20 text-accent' : 'hover:bg-slate-700/50'
-    } ${
-        isSidebarCollapsed ? "lg:justify-center" : ""
-    }`}
->
+                    onClick={() => setActiveIssuer("All")}
+                    className={`w-full flex items-center gap-3 p-3 rounded-lg text-left transition-colors duration-200 ${
+                        activeIssuer === 'All' ? 'bg-accent/20 text-accent' : 'hover:bg-slate-700/50'
+                    } ${
+                        isSidebarCollapsed ? "lg:justify-center" : ""
+                    }`}
+                >
                 <div
                   className={`w-8 h-8 rounded-md flex items-center justify-center transition-colors duration-200 ${
                     activeIssuer === "All" ? "bg-accent" : "bg-slate-600"
@@ -242,7 +242,7 @@ const filteredCertificates = useMemo(() => {
             </div>
           </aside>
 
-          <div className="flex-grow">
+          <div className="flex-grow lg:flex-col lg:max-h-[60vh] lg:overflow-y-auto lg:space-y-2 lg:gap-0 thin-scrollbar">
             <motion.div
               layout
               className={`grid grid-cols-1 sm:grid-cols-2 gap-6 transition-all duration-300 ${
